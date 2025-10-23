@@ -1,4 +1,4 @@
-package jva.cloud.financeanswers
+package jva.cloud.financeanswers.di
 
 import io.ktor.client.engine.darwin.Darwin
 import org.koin.dsl.module

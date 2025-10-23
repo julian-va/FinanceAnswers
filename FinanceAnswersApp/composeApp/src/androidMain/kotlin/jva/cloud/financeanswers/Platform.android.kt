@@ -1,8 +1,9 @@
-package jva.cloud.financeanswers
+package jva.cloud.financeanswers.di
 
 import io.ktor.client.engine.okhttp.OkHttp
+import org.koin.core.module.Module
 import org.koin.dsl.module
 
-actual val platformModule = module {
+actual val platformModule: Module = module {
     single { OkHttp.create() }
 }
