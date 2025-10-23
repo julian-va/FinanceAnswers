@@ -1,9 +1,8 @@
 package jva.cloud.financeanswers
 
-import android.os.Build
+import io.ktor.client.engine.okhttp.OkHttp
+import org.koin.dsl.module
 
-class AndroidPlatform : Platform {
-    override val name: String = "Android ${Build.VERSION.SDK_INT}"
+actual val platformModule = module {
+    single { OkHttp.create() }
 }
-
-actual fun getPlatform(): Platform = AndroidPlatform()

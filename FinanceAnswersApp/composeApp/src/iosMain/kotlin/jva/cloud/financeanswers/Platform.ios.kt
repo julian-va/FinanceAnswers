@@ -1,9 +1,8 @@
 package jva.cloud.financeanswers
 
-import platform.UIKit.UIDevice
+import io.ktor.client.engine.darwin.Darwin
+import org.koin.dsl.module
 
-class IOSPlatform: Platform {
-    override val name: String = UIDevice.currentDevice.systemName() + " " + UIDevice.currentDevice.systemVersion
+actual val platformModule = module {
+    single { Darwin.create() }
 }
-
-actual fun getPlatform(): Platform = IOSPlatform()
