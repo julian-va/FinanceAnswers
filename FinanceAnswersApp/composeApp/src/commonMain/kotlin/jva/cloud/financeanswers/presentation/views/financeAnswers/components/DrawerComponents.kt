@@ -1,4 +1,4 @@
-package jva.cloud.financeanswers.presentation.views.FinanceAnswers.components
+package jva.cloud.financeanswers.presentation.views.financeAnswers.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

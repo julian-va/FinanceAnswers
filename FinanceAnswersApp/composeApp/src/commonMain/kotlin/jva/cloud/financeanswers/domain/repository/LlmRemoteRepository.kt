@@ -4,5 +4,5 @@ import jva.cloud.financeanswers.data.remote.dto.LlmRequestAnswersDto
 import kotlinx.coroutines.flow.Flow
 
 interface LlmRemoteRepository {
-    suspend fun getAnswersFromLlmStreams(question: LlmRequestAnswersDto): Result<Flow<String>>
+    fun getAnswersFromLlmStreams(question: LlmRequestAnswersDto): Flow<Result<String>>
 }

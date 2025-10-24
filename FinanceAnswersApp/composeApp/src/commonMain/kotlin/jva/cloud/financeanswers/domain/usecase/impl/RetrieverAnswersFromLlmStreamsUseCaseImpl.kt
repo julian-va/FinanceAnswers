@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.Flow
 
 class RetrieverAnswersFromLlmStreamsUseCaseImpl(private val llmRepository: LlmRemoteRepository) :
     RetrieverAnswersFromLlmStreamsUseCase {
-    override suspend fun getAnswersFromLlmStreams(question: LlmRequestAnswers): Result<Flow<String>> {
+
+    override fun getAnswersFromLlmStreams(question: LlmRequestAnswers): Flow<Result<String>> {
         return llmRepository.getAnswersFromLlmStreams(question = question.toDto())
     }
 }

@@ -1,4 +1,4 @@
-package jva.cloud.financeanswers.presentation.views.FinanceAnswers.components
+package jva.cloud.financeanswers.presentation.views.financeAnswers.components
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -20,7 +20,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 internal fun ChatInput(
     modifier: Modifier = Modifier,
-    text: String,
+    question: String,
     onTextChange: (String) -> Unit,
     onSend: (String) -> Unit
 ) {
@@ -29,7 +29,7 @@ internal fun ChatInput(
     OutlinedTextField(
         modifier = modifier,
         shape = RoundedCornerShape(40.dp),
-        value = text,
+        value = question,
         onValueChange = onTextChange,
         label = { Text("Escribe algo") },
         keyboardOptions = KeyboardOptions(
@@ -39,8 +39,8 @@ internal fun ChatInput(
         ),
         keyboardActions = KeyboardActions(
             onSend = {
-                if (text.isNotBlank()) {
-                    onSend(text)
+                if (question.isNotBlank()) {
+                    onSend(question)
                     focusManager.clearFocus()
                 }
             },
@@ -49,8 +49,8 @@ internal fun ChatInput(
         trailingIcon = {
             IconButton(
                 onClick = {
-                    if (text.isNotBlank()) {
-                        onSend(text)
+                    if (question.isNotBlank()) {
+                        onSend(question)
                         focusManager.clearFocus()
                     }
                 },

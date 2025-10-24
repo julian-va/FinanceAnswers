@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package jva.cloud.financeanswers.presentation.views.FinanceAnswers.components
+package jva.cloud.financeanswers.presentation.views.financeAnswers.components
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AddCircle
 import androidx.compose.material.icons.outlined.Menu
+import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -35,11 +36,13 @@ import kotlinx.coroutines.launch
 @Composable
 internal fun FinanceAnswersScaffold(
     scope: CoroutineScope,
-    text: String,
+    question: String,
+    answer: String,
     scrollBehavior: TopAppBarScrollBehavior,
-    drawerState: androidx.compose.material3.DrawerState,
+    drawerState: DrawerState,
     showResponse: Boolean,
-    onTextChange: (String) -> Unit
+    onTextChange: (String) -> Unit,
+    onSend: (String) -> Unit
 ) {
     Scaffold(
         modifier = Modifier
@@ -100,9 +103,9 @@ internal fun FinanceAnswersScaffold(
                             .align(Alignment.End)
                             .size(200.dp, 50.dp),
                         shape = RoundedCornerShape(40.dp),
-                        value = text,
+                        value = question,
                         readOnly = true,
-                        onValueChange = onTextChange,
+                        onValueChange = {},
                         label = {
                             Text(
                                 "Pregunta realizada al moodelo",
@@ -113,17 +116,8 @@ internal fun FinanceAnswersScaffold(
 
                     HorizontalDivider(thickness = 2.dp)
 
-                    Text(
-                        text = "Cargando lista..dddddddddddd" +
-                                "dddddddddddddddd" +
-                                "dddddddddd" +
-                                "dddddddd" +
-                                "dddddddd" +
-                                "ddddd" +
-                                "ddddddd."
-                    )
+                    Text(text = answer)
                 }
-
             }
 
             Row(
@@ -144,11 +138,9 @@ internal fun FinanceAnswersScaffold(
                 // Usa el ChatInput que está en el mismo paquete de components
                 ChatInput(
                     modifier = Modifier.weight(2f),
-                    text = text,
+                    question = question,
                     onTextChange = onTextChange,
-                    onSend = {
-                        // Handle send action
-                    }
+                    onSend = onSend
                 )
             }
         }

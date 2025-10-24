@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import jva.cloud.financeanswers.presentation.views.FinanceAnswers.FinanceAnswers
-import jva.cloud.financeanswers.presentation.views.FinanceAnswers.FinanceAnswersView
+import jva.cloud.financeanswers.presentation.views.financeAnswers.FinanceAnswers
+import jva.cloud.financeanswers.presentation.views.financeAnswers.FinanceAnswersView
 
 @Composable
 fun Navigation(navController: NavHostController) {
