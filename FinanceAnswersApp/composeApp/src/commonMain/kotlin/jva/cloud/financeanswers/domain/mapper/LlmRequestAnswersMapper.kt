@@ -1,4 +1,4 @@
-package jva.cloud.financeanswers.data.mapper
+package jva.cloud.financeanswers.domain.mapper
 
 import jva.cloud.financeanswers.data.remote.dto.LlmRequestAnswersDto
 import jva.cloud.financeanswers.domain.model.LlmRequestAnswers

@@ -15,6 +15,8 @@ import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
 import jva.cloud.financeanswers.data.remote.repository.LlmRemoteRepositoryImpl
 import jva.cloud.financeanswers.domain.repository.LlmRemoteRepository
+import jva.cloud.financeanswers.domain.usecase.RetrieverAnswersFromLlmStreamsUseCase
+import jva.cloud.financeanswers.domain.usecase.impl.RetrieverAnswersFromLlmStreamsUseCaseImpl
 import jva.cloud.financeanswers.utils.ConstantApp.BASE_URL_HOST_LLM_API
 import jva.cloud.financeanswers.utils.ConstantApp.CONNECT_TIMEOUT_MILLIS
 import jva.cloud.financeanswers.utils.ConstantApp.KTOR_LOGGER
@@ -39,13 +41,19 @@ val repositoryModule = module {
         LlmRemoteRepositoryImpl(get(qualifier = named(QUALIFIER_LLM_API_CLIENT)))
     }
 }
+
+val usecaseModule = module {
+    single<RetrieverAnswersFromLlmStreamsUseCase> {
+        RetrieverAnswersFromLlmStreamsUseCaseImpl(get())
+    }
+}
 expect val platformModule: Module
 
 fun initKoin(config: KoinAppDeclaration? = null) {
     startKoin {
         config?.invoke(this)
         modules(
-            platformModule, clientHttpModule, repositoryModule
+            platformModule, clientHttpModule, repositoryModule, usecaseModule
         )
     }
 }

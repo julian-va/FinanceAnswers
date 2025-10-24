@@ -16,7 +16,7 @@ class LlmRemoteRepositoryImpl(private val client: HttpClient) : LlmRemoteReposit
         private const val ERROR_MESSAGE = "Error getting response from LLM"
     }
 
-    override suspend fun getAnswersFromLlm(question: LlmRequestAnswersDto): Result<Flow<String>> {
+    override suspend fun getAnswersFromLlmStreams(question: LlmRequestAnswersDto): Result<Flow<String>> {
         return try {
             val response = client.post(urlString = ENDPOINT_LLM_API) {
                 setBody(question)

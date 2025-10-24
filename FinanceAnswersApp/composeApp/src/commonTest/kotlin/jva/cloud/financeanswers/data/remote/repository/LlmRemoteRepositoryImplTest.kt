@@ -45,7 +45,7 @@ class LlmRemoteRepositoryImplTest {
             }
 
             val repo = LlmRemoteRepositoryImpl(client)
-            val result = repo.getAnswersFromLlm(sampleDto)
+            val result = repo.getAnswersFromLlmStreams(sampleDto)
 
             if (result.isSuccess) {
                 val flow = result.getOrNull()
@@ -81,7 +81,7 @@ class LlmRemoteRepositoryImplTest {
             }
 
             val repo = LlmRemoteRepositoryImpl(client)
-            val result = repo.getAnswersFromLlm(sampleDto)
+            val result = repo.getAnswersFromLlmStreams(sampleDto)
 
             val successWithEmptyFlow =
                 result.isSuccess && (result.getOrNull()?.toList()?.isEmpty() == true)
@@ -98,7 +98,7 @@ class LlmRemoteRepositoryImplTest {
             }
 
             val repo = LlmRemoteRepositoryImpl(client)
-            val result = repo.getAnswersFromLlm(sampleDto)
+            val result = repo.getAnswersFromLlmStreams(sampleDto)
 
             assertTrue(result.isFailure)
             val ex = result.exceptionOrNull()
